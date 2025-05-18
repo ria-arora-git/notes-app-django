@@ -1,0 +1,9 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+<form method="post" class="bg-white p-6 rounded shadow">
+  {% csrf_token %}
+  <input name="title" placeholder="Title" value="{{ note.title|default_if_none:'' }}" class="w-full p-2 mb-4 border rounded" required>
+  <textarea name="content" placeholder="Content" class="w-full p-2 mb-4 border rounded" rows="5" required>{{ note.content|default_if_none:'' }}</textarea>
+  <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Save Note</button>
+</form>
+{% endblock %}

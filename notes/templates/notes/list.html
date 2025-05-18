@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+
+<div class="mt-60 flex flex-wrap gap-6">
+
+  <!-- Create Note Card -->
+  <a href="{% url 'note_create' %}" class="bg-white hover:bg-violet-200 text-violet-700 border-l-8 border-violet-400
+      w-72 h-[20rem] p-4 rounded-lg shadow-lg flex flex-col justify-center items-center text-center transition-all duration-200">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+    <span class="text-lg font-semibold">Create New Note</span>
+  </a>
+
+  <!-- Note Cards -->
+  {% for note in notes %}
+    <div class="bg-white p-4 rounded-lg shadow-lg border-l-8 border-violet-400 w-72 h-[20rem] flex flex-col justify-between">
+      <div>
+        <h2 class="text-lg font-bold text-gray-800 mb-2">{{ note.title }}</h2>
+        <p class="text-gray-700 text-sm overflow-hidden overflow-ellipsis line-clamp-6">{{ note.content }}</p>
+      </div>
+      <div class="mt-4 flex justify-between text-sm">
+        <a href="{% url 'note_edit' note.pk %}" class="text-violet-600 hover:underline">Edit</a>
+        <a href="{% url 'note_delete' note.pk %}" class="text-red-600 hover:underline">Delete</a>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-gray-600">No notes yet.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
