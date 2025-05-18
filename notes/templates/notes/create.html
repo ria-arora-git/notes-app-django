@@ -3,8 +3,8 @@
 <form method="post" class="bg-violet-500 p-6 mt-10 rounded shadow h-[45rem] flex flex-col justify-center items-center">
   {% csrf_token %}
   <h1 class="text-6xl font-bold text-center text-white flex justify center items-center absolute top-28">Start a new chapter</h1>
-  <input name="title" placeholder="Title" value="{{ note.title|default_if_none:'' }}" class="w-4/5 h-[4rem] p-2 mb-6 mt-24 border border-black rounded bg-blue-200 text-black " required>
-  <textarea name="content" placeholder="Content" class="w-4/5 h-[22rem] p-2 mb-12 border rounded bg-blue-200 text-black border-black" rows="5" required>{{ note.content|default_if_none:'' }}</textarea>
+  <input name="title" placeholder="Title" value="{{ note.title|default_if_none:'' }}" class="w-4/5 h-[4rem] p-2 mb-6 mt-24 border border-black rounded bg-blue-100 text-black placeholder:text-grey-900" required>
+  <textarea name="content" placeholder="Content" class="w-4/5 h-[22rem] p-2 mb-12 border rounded bg-blue-100 text-black border-black" rows="5" required>{{ note.content|default_if_none:'' }}</textarea>
   <button type="submit" class="bg-pink-500 text-white px-6 py-3 rounded text-lg">Save Note</button>
 </form>
 {% endblock %}
